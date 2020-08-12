@@ -31,6 +31,8 @@ Kirigami.FormLayout {
 
     property alias cfg_showLegend: showSensorsLegendCheckbox.checked
     property alias cfg_showSteam: showSteamCheckbox.checked
+    property alias cfg_rangeFrom: rangeFromSpin.value
+    property alias cfg_rangeTo: rangeToSpin.value
 
     Controls.CheckBox {
         id: showSensorsLegendCheckbox
@@ -40,5 +42,16 @@ Kirigami.FormLayout {
         id: showSteamCheckbox
         text: i18n("Blow Steam When Maxed Out")
     }
+    Controls.SpinBox {
+        id: rangeFromSpin
+        editable: true
+        Kirigami.FormData.label: i18n("From:")
+    }
+    Controls.SpinBox {
+        id: rangeToSpin
+        from: -99999
+        to: 99999
+        editable: true
+        Kirigami.FormData.label: i18n("To:")
+    }
 }
-

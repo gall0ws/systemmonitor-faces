@@ -167,7 +167,13 @@ Item {
     }
     Sensors.Sensor {
         id: sensor
-        property real sensorRate: value/Math.max(value, maximum) || 0
+        property real sensorRate: getRate()
+
+        function getRate() {
+            var min = root.controller.faceConfiguration.rangeFrom;
+            var max = root.controller.faceConfiguration.rangeTo;
+            return (value - min) / (max - min);
+        }
 
         sensorId: root.controller.highPrioritySensorIds[0]
     }
